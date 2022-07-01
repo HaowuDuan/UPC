@@ -157,3 +157,36 @@ end
 
 
 plot!()
+
+
+
+
+let
+    v2_dipole_2=readdlm("v2_data_paper/v2_0.4_dipole.dat")
+    scatter(v2_dipole_2[:,1],v2_dipole_2[:,2],yerror=v2_dipole_2[:,3],color=:teal,label="Dipole Model",marker = :diamond)
+    plot!(v2_dipole_2[:,1],v2_dipole_2[:,2],color=:teal,alpha=0.5,label="")
+    plot!(label=" ")
+    plot!(ylim=(-0.002,0.2))
+
+    annotate!(3, 0.1, (L"Q_s = 2"*" GeV\n"*L"p^{\mathrm{max}}_\perp = 2"*" GeV",:left,8,"serif-roman"))
+
+    scatter_style(L"p_\perp"*", GeV", L"v_2")
+
+    v2_mv_2=readdlm("v2_data_paper/v2_0.4_MV1.dat")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model "*L"R="*"1/GeV",marker = :utriangle,color=:royalblue4)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:royalblue4,alpha=0.5,label="")
+    L"p_\perp"*", GeV"
+
+    v2_mv_2=readdlm("v2_data_paper/v2_0.4_MV3.dat")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model "*L"R="*"3/GeV",marker = :circle,color=:steelblue4)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:steelblue4,alpha=0.5,label="")
+
+    scatter!(x,y,yerr=dy,xerr=dx,label="ATLAS",marker = :star,markercolor = :gray,opacity=0.2)
+
+
+    #plot!(ylim=(-0.02,0.2))
+    savefig("Max2_v2_04.pdf")
+end
+
+
+plot!()
