@@ -190,7 +190,10 @@ let
     plot!(label=" ")
     plot!(ylim=(-0.002,0.2))
 
-    annotate!(3, 0.1, (L"Q_s = 2"*" GeV\n"*L"p^{\mathrm{max}}_\perp = 2"*" GeV",:left,8,"serif-roman"))
+    annotate!(3, 0.07, (L"Q_s = 2"*" GeV\n"*L"p^{\mathrm{max}}_\perp = 2"*" GeV",:left,8,"serif-roman"))
+
+    scatter!([minimum(v2_dipole_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
+
 
     scatter_style(L"p_\perp"*", GeV", L"v_2")
 
@@ -199,9 +202,14 @@ let
     plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:royalblue4,alpha=0.5,label="")
     L"p_\perp"*", GeV"
 
+    scatter!([minimum(v2_dipole_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
+
+
     v2_mv_2=readdlm("v2_data_paper/v2_0.4_MV3.dat")
     scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model "*L"R="*"3/GeV",marker = :circle,color=:steelblue4)
     plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:steelblue4,alpha=0.5,label="")
+
+    scatter!([minimum(v2_dipole_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
 
     scatter!(x,y,yerr=dy,xerr=dx,label="ATLAS",marker = :star,markercolor = :gray,opacity=0.2)
 
@@ -245,7 +253,35 @@ let
 
 
     #plot!(ylim=(-0.02,0.2))
-    savefig("Factor_v2_04.pdf")
+    savefig("Factor_v2_mv.pdf")
+end
+
+
+plot!()
+
+let
+    plot(ylim=(-0.002,0.2))
+    annotate!(3, 0.1, (L"Q_s = 2"*" GeV\n",:left,8,"serif-roman"))
+    scatter_style(L"p_\perp"*", GeV", L"v_2")
+
+    v2_mv_2=readdlm("v2_data_paper/v2_bin_0409_dipole.dat")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="Dipole Model 0.4 GeV"*L"<p_\perp<"*"0.9 GeV",marker = :utriangle,color=:royalblue4)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:royalblue4,alpha=0.5,label="")
+
+    scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
+
+    v2_mv_2=readdlm("v2_data_paper/v2_bin_0420_dipole.dat")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="Dipole Model 0.4 GeV"*L"<p_\perp<"*"2 GeV",marker = :circle,color=:steelblue4)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:steelblue4,alpha=0.5,label="")
+
+    scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
+
+
+    scatter!(x,y,yerr=dy,xerr=dx,label="ATLAS",marker = :star,markercolor = :gray,opacity=0.2)
+
+
+    #plot!(ylim=(-0.02,0.2))
+    savefig("Factor_v2_dip.pdf")
 end
 
 
