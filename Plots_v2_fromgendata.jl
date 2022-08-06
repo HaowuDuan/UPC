@@ -237,14 +237,20 @@ let
     scatter_style(L"p_\perp"*", GeV", L"v_2")
 
     v2_mv_2=readdlm("v2_data_paper/v2_bin_0409_R1.dat")
-    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model 0.4 GeV"*L"<p_\perp<"*"0.9 GeV",marker = :utriangle,color=:royalblue4)
-    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:royalblue4,alpha=0.5,label="")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model 0.4 GeV"*L"<p_\perp<"*"0.9 GeV",marker = :utriangle,color=:teal)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:teal,alpha=0.5,label="")
 
     scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
 
     v2_mv_2=readdlm("v2_data_paper/v2_bin_0420_R1.dat")
-    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model 0.4 GeV"*L"<p_\perp<"*"2 GeV",marker = :circle,color=:steelblue4)
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model 0.4 GeV"*L"<p_\perp<"*"2 GeV",marker = :diamond,color=:steelblue4)
     plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:steelblue4,alpha=0.5,label="")
+
+    scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
+
+    v2_mv_2=readdlm("v2_data_paper/v2_bin_0920_R1.dat")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="MV Model 0.9 GeV"*L"<p_\perp<"*"2 GeV",marker = :circle,color=:royalblue4)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:royalblue4,alpha=0.5,label="")
 
     scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
 
@@ -265,20 +271,27 @@ let
     scatter_style(L"p_\perp"*", GeV", L"v_2")
 
     v2_mv_2=readdlm("v2_data_paper/v2_bin_0409_dipole.dat")
-    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="Dipole Model 0.4 GeV"*L"<p_\perp<"*"0.9 GeV",marker = :utriangle,color=:royalblue4)
-    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:royalblue4,alpha=0.5,label="")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="Dipole Model 0.4 GeV"*L"<p_\perp<"*"0.9 GeV",marker = :utriangle,color=:teal)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:teal,alpha=0.5,label="")
 
     scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
 
     v2_mv_2=readdlm("v2_data_paper/v2_bin_0420_dipole.dat")
-    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="Dipole Model 0.4 GeV"*L"<p_\perp<"*"2 GeV",marker = :circle,color=:steelblue4)
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="Dipole Model 0.4 GeV"*L"<p_\perp<"*"2 GeV",marker = :diamond,color=:steelblue4)
     plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:steelblue4,alpha=0.5,label="")
 
     scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
 
+    v2_mv_2=readdlm("v2_data_paper/v2_bin_0920_dipole.dat")
+    scatter!(v2_mv_2[:,1],v2_mv_2[:,2],yerror=v2_mv_2[:,3], label="Dipole Model 0.9 GeV"*L"<p_\perp<"*"2 GeV",marker = :circle,color=:royalblue4)
+    plot!(v2_mv_2[:,1],v2_mv_2[:,2],color=:royalblue4,alpha=0.5,label="")
+
+    scatter!([minimum(v2_mv_2[:,1])],[0], label=" ", ms=0, mc=:white, msc=:white)
 
     scatter!(x,y,yerr=dy,xerr=dx,label="ATLAS",marker = :star,markercolor = :gray,opacity=0.2)
 
+    data_0409=readdlm("v2_data_paper/v2_bin_0409_dipole.dat")
+    scatter!(data_0409[:,1],data_0409[:,2],yerr=data_0409[:,3],label="ATLAS: 0.4 GeV"*L"<p_b<"*"0.9 GeV",markercolor = :red,opacity=1)
 
     #plot!(ylim=(-0.02,0.2))
     savefig("Factor_v2_dip.pdf")
